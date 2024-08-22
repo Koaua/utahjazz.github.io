@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Channel Info</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+      input {
+        padding: 10px;
+        font-size: 1.2em;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+      }
+      #results {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>YouTube Channel Info</h1>
+    <input type="text" id="channelId" placeholder="Enter YouTube Channel ID" />
+    <button onclick="getChannelInfo()">Get Info</button>
+    <div id="results">
+      <h2 id="channelTitle"></h2>
+      <p id="description"></p>
+      <p><strong>Subscribers:</strong> <span id="subscribers"></span></p>
+      <p><strong>Total Views:</strong> <span id="views"></span></p>
+      <p>
+        <strong>Monetization Status:</strong> <span id="monetization"></span>
+      </p>
+    </div>
+
+    <script>
+      async function getChannelInfo() {
+        const channelId = document.getElementById("channelId").value;
+        const response = await fetch(`/channel/${channelId}`);
+        const data = await response.json();
+
+        document.getElementById("channelTitle").innerText = data.title;
+        document.getElementById("description").innerText = data.description;
+        document.getElementById("subscribers").innerText = data.subscribers;
+        document.getElementById("views").innerText = data.views;
+        document.getElementById("monetization").innerText =
+          data.monetizationStatus;
+
+        document.getElementById("results").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
