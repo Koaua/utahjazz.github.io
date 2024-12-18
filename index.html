@@ -3,116 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>L5 PQ</title>
+    <title>Countdown to Cooper Flagg</title>
     <style>
       body {
         font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
         margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-      }
-      header {
-        background-color: #4caf50;
+        background-color: #282c34;
         color: white;
-        padding: 1em 0;
+      }
+      #countdown {
         text-align: center;
-      }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1em;
-        padding-bottom: 3em; /* Add padding to the bottom */
-      }
-      .hero {
-        text-align: center;
-        padding: 2em 0;
-      }
-      .hero h1 {
-        margin: 0;
-        font-size: 2.5em;
-      }
-      .hero p {
-        font-size: 1.2em;
-      }
-      .content {
-        margin: 2em 0;
-      }
-      .content h2 {
-        font-size: 1.5em;
-      }
-      footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 1em 0;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-      }
-      @media (max-width: 600px) {
-        .content p {
-          margin-bottom: 1.5em; /* Increase bottom margin for <p> elements */
-        }
+        font-size: 2rem;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Laie 5th PQ - Career Night</h1>
-    </header>
-    <div class="container">
-      <div class="hero">
-        <h1>Directions for tonight</h1>
-        <p><em>(Below are the links that we'll be using today)</em></p>
-      </div>
-      <div class="content">
-        <h2>Youtube Search Tool</h2>
-        <p><a href="youtubetest.html">Youtube Test Run</a></p>
-        <h2>Personality Test</h2>
-        <p>
-          A personality test helps you to decide on which types or careers, and
-          roles in career that you may fit well into.
-          <a>Colors Personality Test</a>
-        </p>
-        <h2>Career Choice</h2>
-        <p>Select a career and see how much money you'll bring home</p>
-        <p>
-          <a href="career_information.html"
-            >Career Information by Color Personality</a
-          >
-        </p>
-        <h2>Find a House to live in!</h2>
-        <p>
-          Use this link to look for a house in a location that you think you
-          might like to live in.
-        </p>
-        <p>
-          <a href="https://www.zillow.com/">Go House Hunting</a>
-        </p>
-        <p>
-          REMEMBER -- according to Bankrate your mortgage payment should be no
-          more than 28-35% of your take home pay
-        </p>
-        <h2>Other things to consider</h2>
-        <h3>Having Children?</h3>
-        <p>
-          According to the US Department of Agriculture - raising one child in
-          2015 from birth to 18 years old costs
-          <strong>approximately $233k</strong>. Adjusted for inflation, that is
-          <strong>about $312k</strong> today.
-        </p>
-        <h3>Want a car?</h3>
-        <p>
-          <a
-            href="https://www.kbb.com/?&psid=20003&utm_source=GOOGLE&utm_medium=sem_brand-core_perf&utm_campaign=kbb_na_na_national_evergreen_site-visits_na_na&utm_content=keyword_text_na_na_20003_na&utm_term=kbb&ds_rl=1293870&gad_source=1&gclid=CjwKCAjwk8e1BhALEiwAc8MHiNxQh79KkQluUYoyYVI3s-33rWxqcqFHU3mw3ei_Ds3juoEH1MtunBoCloMQAvD_BwE&gclsrc=aw.ds"
-            >Find the value of your favorite car</a
-          >
-        </p>
-      </div>
+    <div id="countdown">
+      Only X days, X hours, X minutes, X seconds until Cooper Flagg joins the
+      Utah Jazz!
     </div>
-    <footer>
-      <p>&copy; 2024 10MinuteSitesLLC. All rights reserved.</p>
-    </footer>
+
+    <script>
+      // Target date: June 26, 2025, at midnight
+      const targetDate = new Date("June 26, 2025 00:00:00").getTime();
+
+      // Update the countdown every second
+      const countdownInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const timeLeft = targetDate - now;
+
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Update the text
+        document.getElementById(
+          "countdown"
+        ).textContent = `Only ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until Cooper Flagg joins the Utah Jazz!`;
+
+        // Stop the countdown if the target date has passed
+        if (timeLeft < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").textContent =
+            "Cooper Flagg has joined the Utah Jazz!";
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
