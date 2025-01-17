@@ -25,36 +25,5 @@
     <div id="countdown">
       This webpage is not affiliated in any way with the Utah Jazz.
     </div>
-
-    <script>
-      // Target date: June 26, 2025, at midnight
-      const targetDate = new Date("June 26, 2025 00:00:00").getTime();
-
-      // Update the countdown every second
-      const countdownInterval = setInterval(() => {
-        const now = new Date().getTime();
-        const timeLeft = targetDate - now;
-
-        // Calculate days, hours, minutes, and seconds
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        // Update the text
-        document.getElementById(
-          "countdown"
-        ).textContent = `Only ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until the Cooper Flagg era`;
-
-        // Stop the countdown if the target date has passed
-        if (timeLeft < 0) {
-          clearInterval(countdownInterval);
-          document.getElementById("countdown").textContent =
-            "Cooper Flagg has joined the Utah Jazz!";
-        }
-      }, 1000);
-    </script>
   </body>
 </html>
