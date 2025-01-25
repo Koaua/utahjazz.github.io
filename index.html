@@ -15,18 +15,87 @@
         background-color: #282c34;
         color: white;
       }
+
       #countdown {
         text-align: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
+        line-height: 1.8;
+      }
+
+      #countdown a {
+        color: #61dafb;
+        text-decoration: none;
+      }
+
+      #countdown a:hover {
+        text-decoration: underline;
+      }
+
+      .disclaimer {
+        font-size: 1rem;
+        margin-top: 1rem;
+        font-style: italic;
+        color: #ffcccb;
+      }
+
+      input {
+        margin: 0.5rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #61dafb;
+        color: #282c34;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #21a1f1;
       }
     </style>
   </head>
   <body>
     <div id="countdown">
-      Looking for the Utah Jazz? Visit <a href="https://utahjazz.com">https://utahjazz.com</a>
-      <br>
-      <br>
-      <em>This webpage is not affiliated in any way with the Utah Jazz</em>
+      <p>
+        Looking for the Utah Jazz? Visit 
+        <a href="https://utahjazz.com" target="_blank" rel="noopener noreferrer">
+          https://utahjazz.com
+        </a>
+      </p>
+      <p class="disclaimer">
+        This webpage is not affiliated in any way with the Utah Jazz.
+      </p>
+      <br />
+
+      <!-- Username and Password Input -->
+      <input type="text" id="login_username" placeholder="Username" />
+      <input type="password" id="login_password" placeholder="Password" />
+      <button onclick="login()">Login</button>
     </div>
+
+    <script>
+      function login() {
+        // Get user input
+        const username = document.getElementById("login_username").value.trim();
+        const password = document.getElementById("login_password").value.trim();
+
+        // Check if both credentials are 'media'
+        if (username === "media" && password === "media") {
+          // Redirect to the streaming page
+          window.location.href = "stream.html";
+        } else {
+          // Show error message
+          alert("Invalid credentials. Please try again.");
+        }
+      }
+    </script>
   </body>
 </html>
